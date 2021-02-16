@@ -1,0 +1,28 @@
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $block DKostynenko\SinkConfigurator\Block\Filter
+ */
+if ($block->canShow()):  ?>
+<div class="block block-sink-configurator">
+    <div class="block-title"><?= __('Sink configurator') ?></div>
+    <div class="block-content">
+        <p><?= __('Please indicate the cut-out dimension in mm') . ':' ?></p>
+        <form method="get" action="#">
+            <?php foreach ($block->getAttributes() as $name => $title):?>
+                <label for="width"><?= $title ?></label>
+                <div class="input-wrap">
+                    <input class="input-text" type="text" name="<?= $name ?>" value="<?= $block->getValue($name) ?>" placeholder="z.B <?= round(rand(100, 900), -1); ?>">
+                    <span class="value">mm</span>
+                </div>
+            <?php endforeach; ?>
+
+            <div class="actions">
+                <button type="submit" class="button btn-filter btn-submit"><span><span><?= __('Filter') ?></span></span></button>
+                <button type="button" onclick="setLocation('?amp%3Bheight='); return false;" class="button btn-filter btn-cancel"><span><span><?= __('Reset to default')?></span></span></button>
+            </div>
+        </form>
+    </div>
+</div>
+<?php endif; ?>
